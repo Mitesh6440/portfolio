@@ -16,7 +16,7 @@ origins = [
     "http://localhost:5173",
     "http://localhost:3000",
     "http://127.0.0.1:5173",
-    "https://portfolio-chi-nine-1tz5999gky.vercel.app",  # Your Vercel frontend
+    "https://mitesh-dev.vercel.app",  # Your Vercel frontend
 ]
 
 app.add_middleware(
