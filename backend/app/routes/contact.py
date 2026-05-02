@@ -11,7 +11,7 @@ router = APIRouter(tags=["Contact"])
 @router.post("/contact", response_model=ContactResponse)
 async def submit_contact(data: ContactMessage):
     """Handle contact form submission."""
-    success = save_contact_message(
+    success = await save_contact_message(
         name=data.name,
         email=data.email,
         message=data.message,

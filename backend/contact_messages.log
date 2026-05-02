@@ -1,1 +1,5 @@
 [2026-05-02T17:51:29.676404] Name: bhargav | Email: bhargavsavaliya601@gmail.com | Message: hello
+[2026-05-03T00:15:08.059687] Name: Test User | Email: test@example.com | Message: This is a test message for Discord webhook.
+[2026-05-03T00:16:26.034829] Name: Test User | Email: test@example.com | Message: This is a test message for Discord webhook with dotenv fix.
+[2026-05-03T00:17:33.669786] Name: Mitesh | Email: savaliyamitesh99@gmail.com | Message: Final test for Discord notification.
+[2026-05-03T00:18:48.983480] Name: Mitesh Debug | Email: savaliyamitesh99@gmail.com | Message: Testing with print statements.
