@@ -1,0 +1,217 @@
+[
+  {
+    "id": 1,
+    "slug": "meetmind",
+    "title": "MeetMind",
+    "tagline": "AI-powered meeting intelligence & task assignment",
+    "category": "AI/ML",
+    "description": "An AI-powered application that automatically extracts tasks from meeting audio recordings, assigns them to team members using intelligent skill matching, and manages deadlines, priorities, and task dependencies — transforming meeting chaos into actionable workflows.",
+    "techStack": ["Python", "FastAPI", "Whisper AI", "NLP", "JavaScript"],
+    "githubUrl": "#",
+    "detail": {
+      "heroImage": "/projects/meetmind/04-task-dashboard.png",
+      "problem": "In today's fast-paced business environment, 70% of meeting decisions are never implemented due to poor follow-up, costing $37 billion annually on unproductive meetings in the US alone. Teams spend hours manually transcribing meetings and identifying action items, tasks are assigned inefficiently or forgotten entirely, and complex projects suffer from unrecognized task interdependencies. The average employee spends 31 hours per month in meetings, with significant time lost to manual note-taking and task assignment.",
+      "features": [
+        {
+          "title": "Intelligent Audio Processing",
+          "description": "Upload meeting audio files (.mp3, .wav, .m4a) and get automatic transcription using OpenAI Whisper, with audio preprocessing including normalization and format conversion via FFmpeg.",
+          "icon": "🎙️"
+        },
+        {
+          "title": "Smart Task Extraction",
+          "description": "Context-aware NLP pipeline that identifies actionable items from natural conversation, extracts deadlines from temporal expressions, detects priorities (Critical/High/Medium/Low), and handles vague references using surrounding context.",
+          "icon": "🎯"
+        },
+        {
+          "title": "Automatic Team Assignment",
+          "description": "Multi-factor assignment algorithm that matches tasks to team members through explicit mention detection, skill-based matching, role matching, and workload balancing — with confidence scores and assignment reasoning.",
+          "icon": "🤖"
+        },
+        {
+          "title": "Dependency Mapping",
+          "description": "Identifies task dependencies ('depends on', 'after', 'first'), builds directed dependency graphs using NetworkX, detects cycles, and provides execution order for project planning.",
+          "icon": "🔗"
+        }
+      ],
+      "architecture": {
+        "description": "MeetMind follows a layered processing pipeline: Audio Upload → Preprocessing → Whisper Transcription → Text Processing → Task Extraction → Enrichment (Entity Recognition, Deadlines, Priorities, Dependencies) → Skill Matching → Task Assignment → Validation. The FastAPI backend handles the complete NLP pipeline, while a Vanilla JavaScript frontend provides a modern, responsive dashboard with dual card/table view modes.",
+        "techDetails": [
+          { "name": "FastAPI", "role": "High-performance async Python backend with REST API endpoints for audio processing, team management, and task validation" },
+          { "name": "OpenAI Whisper", "role": "State-of-the-art speech-to-text transcription — handles multiple audio formats with high accuracy" },
+          { "name": "NLP Pipeline", "role": "Custom NLP services: task extraction, NER, deadline parsing, priority detection, and skill inference — built without heavy ML frameworks" },
+          { "name": "NetworkX", "role": "Directed graph library for building task dependency maps, cycle detection, and topological ordering" },
+          { "name": "Vanilla JavaScript", "role": "Zero-dependency frontend with drag-and-drop uploads, real-time processing status, filterable card/table views, and dependency graph visualization via Chart.js" }
+        ]
+      },
+      "results": {
+        "description": "MeetMind transforms meeting chaos into organized, assigned task lists in seconds. The multi-factor assignment algorithm matches tasks with confidence scores and transparent reasoning. Dual view modes (cards and tables) with priority filters make it easy for teams to track and manage their workload.",
+        "metrics": [
+          { "label": "Task Extraction", "value": "~5 sec" },
+          { "label": "Assignment Accuracy", "value": "90%+" },
+          { "label": "Audio Formats", "value": "3 types" },
+          { "label": "Max File Size", "value": "25 MB" }
+        ]
+      },
+      "screenshots": [
+        {
+          "src": "/projects/meetmind/01-upload.png",
+          "caption": "Upload meeting audio — Drag & drop interface with file validation",
+          "alt": "MeetMind upload interface with drag and drop audio upload area"
+        },
+        {
+          "src": "/projects/meetmind/02-team-management.png",
+          "caption": "Team management — Add members with roles, skills, and CRUD operations",
+          "alt": "MeetMind team management panel showing team members with roles and skills"
+        },
+        {
+          "src": "/projects/meetmind/03-processing.png",
+          "caption": "Processing pipeline — Real-time status for upload, preprocessing, transcription, extraction, and assignment",
+          "alt": "MeetMind processing pipeline showing step-by-step progress of audio analysis"
+        },
+        {
+          "src": "/projects/meetmind/04-task-dashboard.png",
+          "caption": "Task dashboard — Summary cards, priority filters, and assignee-based card view",
+          "alt": "MeetMind task dashboard showing extracted tasks with priorities and assignments"
+        },
+        {
+          "src": "/projects/meetmind/05-task-detail.png",
+          "caption": "Task detail — Assignment reasoning, confidence scores, technical terms, and dependencies",
+          "alt": "MeetMind task detail modal showing assignment reasoning and priority information"
+        }
+      ],
+      "businessHighlights": {
+        "sectionTitle": "Business Impact & Market Opportunity",
+        "description": "MeetMind addresses a critical pain point in the $37B+ meeting productivity space, where valuable decisions and action items are lost in post-meeting chaos.",
+        "highlights": [
+          {
+            "icon": "📊",
+            "title": "Market Opportunity",
+            "text": "70% of meeting decisions go unimplemented. MeetMind targets SMBs, tech companies, and professional services firms with limited administrative resources and high meeting frequency."
+          },
+          {
+            "icon": "⚔️",
+            "title": "Competitive Edge",
+            "text": "Unlike Otter.ai (transcription-only) or Fireflies.ai (basic tasks), MeetMind provides end-to-end automation: audio → transcription → task extraction → intelligent assignment with dependency mapping."
+          },
+          {
+            "icon": "💰",
+            "title": "Value Proposition",
+            "text": "Eliminates manual note-taking, prevents task loss, balances team workloads automatically, and visualizes task dependencies — saving teams hours per week on meeting follow-up."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": 2,
+    "slug": "neural-style-transfer",
+    "title": "Neural Style Transfer App",
+    "tagline": "Transform photos into art with deep learning",
+    "category": "Deep Learning",
+    "description": "A deep learning application that transforms photos into artistic masterpieces using neural style transfer. Features real-time preview, multiple style models, and batch processing support.",
+    "techStack": ["Python", "PyTorch", "FastAPI", "React", "Deep Learning"],
+    "githubUrl": "#",
+    "detail": {
+      "heroImage": "/projects/project2-hero.webp",
+      "problem": "Artists and content creators often want to apply artistic styles to their photos but lack the technical skills or expensive software required. Existing neural style transfer tools are either slow, low-quality, or require GPU-heavy setups that aren't accessible to most users.",
+      "features": [
+        {
+          "title": "Real-Time Preview",
+          "description": "Live preview of style transfer as you adjust parameters, powered by optimized inference on lightweight models.",
+          "icon": "👁️"
+        },
+        {
+          "title": "Multiple Style Models",
+          "description": "Pre-trained models for various artistic styles — impressionism, cubism, watercolor, and custom styles uploaded by users.",
+          "icon": "🎨"
+        },
+        {
+          "title": "Batch Processing",
+          "description": "Process entire photo albums with a single style, with progress tracking and background queue management.",
+          "icon": "📦"
+        },
+        {
+          "title": "Resolution Control",
+          "description": "Adjustable output resolution from quick previews to print-quality 4K outputs with progressive rendering.",
+          "icon": "📐"
+        }
+      ],
+      "architecture": {
+        "description": "Built on a PyTorch backend with pre-trained VGG19 feature extractors for style transfer. The FastAPI server handles image upload, processing queues, and serves results. React frontend provides an intuitive drag-and-drop interface with real-time parameter controls.",
+        "techDetails": [
+          { "name": "PyTorch", "role": "Deep learning framework for neural style transfer model inference" },
+          { "name": "VGG19", "role": "Pre-trained CNN for feature extraction and perceptual loss computation" },
+          { "name": "FastAPI", "role": "Async API server with background task processing for batch operations" },
+          { "name": "React", "role": "Interactive UI with drag-and-drop uploads and real-time parameter sliders" },
+          { "name": "Celery", "role": "Distributed task queue for handling batch processing jobs" }
+        ]
+      },
+      "results": {
+        "description": "The application delivers high-quality style transfers in seconds rather than minutes, making artistic AI accessible to non-technical users. The batch processing feature has been particularly popular for social media content creators.",
+        "metrics": [
+          { "label": "Processing Time", "value": "~3 sec" },
+          { "label": "Styles Available", "value": "15+" },
+          { "label": "Max Resolution", "value": "4K" },
+          { "label": "Batch Size", "value": "50 images" }
+        ]
+      },
+      "screenshots": []
+    }
+  },
+  {
+    "id": 3,
+    "slug": "smart-analytics-dashboard",
+    "title": "Smart Analytics Dashboard",
+    "tagline": "Predictive insights powered by machine learning",
+    "category": "Full Stack",
+    "description": "A real-time analytics dashboard with predictive insights powered by ML models. Features interactive charts, anomaly detection, and automated report generation with natural language summaries.",
+    "techStack": ["React", "Next.js", "Python", "Machine Learning", "D3.js"],
+    "githubUrl": "#",
+    "detail": {
+      "heroImage": "/projects/project3-hero.webp",
+      "problem": "Business teams drown in raw data but starve for actionable insights. Traditional dashboards show historical data without predictive capabilities, and anomaly detection requires dedicated data science resources that most small-to-mid companies can't afford.",
+      "features": [
+        {
+          "title": "Anomaly Detection",
+          "description": "Automated detection of unusual patterns in data streams using Isolation Forest and statistical methods, with configurable sensitivity thresholds.",
+          "icon": "🔍"
+        },
+        {
+          "title": "Predictive Forecasting",
+          "description": "Time-series forecasting with confidence intervals, powered by ARIMA and Prophet models for accurate trend prediction.",
+          "icon": "📈"
+        },
+        {
+          "title": "Natural Language Reports",
+          "description": "Auto-generated executive summaries that translate complex data patterns into plain English insights.",
+          "icon": "📝"
+        },
+        {
+          "title": "Interactive Visualizations",
+          "description": "D3.js-powered charts with zoom, filter, and drill-down capabilities for deep data exploration.",
+          "icon": "📊"
+        }
+      ],
+      "architecture": {
+        "description": "A Next.js frontend with server-side rendering for fast initial loads and SEO. Python ML microservices handle forecasting and anomaly detection. D3.js powers custom interactive visualizations. PostgreSQL stores historical data with TimescaleDB extension for time-series optimization.",
+        "techDetails": [
+          { "name": "Next.js", "role": "SSR-enabled React framework for fast dashboard rendering and API routes" },
+          { "name": "D3.js", "role": "Custom interactive charts with transitions, tooltips, and drill-down navigation" },
+          { "name": "Python ML Services", "role": "Scikit-learn and Prophet models for anomaly detection and forecasting" },
+          { "name": "PostgreSQL + TimescaleDB", "role": "Time-series optimized storage for high-frequency data ingestion" },
+          { "name": "WebSocket", "role": "Real-time data streaming for live dashboard updates" }
+        ]
+      },
+      "results": {
+        "description": "The dashboard reduces the time from data to insight by automating the analysis pipeline. Natural language reports have made data accessible to non-technical stakeholders.",
+        "metrics": [
+          { "label": "Data Refresh", "value": "Real-time" },
+          { "label": "Forecast Accuracy", "value": "92%" },
+          { "label": "Report Generation", "value": "<5 sec" },
+          { "label": "Data Points", "value": "1M+ daily" }
+        ]
+      },
+      "screenshots": []
+    }
+  }
+]

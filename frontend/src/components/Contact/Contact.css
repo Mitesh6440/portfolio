@@ -1,0 +1,369 @@
+/* ============================================
+   Contact Section — Premium Two-Column Layout
+   ============================================ */
+
+.contact {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient glow */
+.contact::before {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: 30%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(179, 71, 234, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Grid Layout ── */
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+/* ── Left Column ── */
+.contact__left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* ── Availability Badge ── */
+.contact__availability {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 6px 16px;
+  background: rgba(0, 230, 118, 0.06);
+  border: 1px solid rgba(0, 230, 118, 0.2);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--accent-green);
+  width: fit-content;
+}
+
+.contact__availability-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+  animation: pulse-green 2s ease-in-out infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--accent-green); }
+  50% { opacity: 0.6; box-shadow: 0 0 16px var(--accent-green); }
+}
+
+/* ── Form ── */
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  position: relative;
+}
+
+.contact__field::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-cyan-purple);
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+.contact__field--focused::after {
+  width: 100%;
+}
+
+.contact__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: color var(--transition-base);
+}
+
+.contact__field--focused .contact__label {
+  color: var(--accent-cyan);
+}
+
+.contact__input {
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-base);
+  color: var(--text-primary);
+  transition: all var(--transition-base);
+}
+
+.contact__input:focus {
+  border-color: rgba(0, 240, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.06);
+}
+
+.contact__input::placeholder {
+  color: var(--text-muted);
+}
+
+.contact__textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+/* ── Submit Button ── */
+.contact__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 14px 32px;
+  background: var(--gradient-cyan-purple);
+  color: var(--bg-primary);
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.5px;
+  border: none;
+  transition: all var(--transition-base);
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact__submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.contact__submit:hover::before {
+  transform: translateX(100%);
+}
+
+.contact__submit:hover {
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.4), 0 0 50px rgba(179, 71, 234, 0.2);
+  transform: translateY(-2px);
+}
+
+.contact__submit:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ── Toast ── */
+.contact__toast {
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.contact__toast--success {
+  background: rgba(0, 230, 118, 0.08);
+  border: 1px solid rgba(0, 230, 118, 0.25);
+  color: var(--accent-green);
+}
+
+.contact__toast--error {
+  background: rgba(255, 45, 149, 0.08);
+  border: 1px solid rgba(255, 45, 149, 0.25);
+  color: var(--accent-pink);
+}
+
+/* ── Contact Info Cards ── */
+.contact__info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.contact__info-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 16px 20px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  height: 100%;
+}
+
+.contact__info-card:hover {
+  border-color: var(--accent-cyan);
+  background: var(--glass-bg-hover);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.contact__info-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 240, 255, 0.08);
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.contact__info-content {
+  flex: 1;
+  min-width: 0; /* Prevents flex items from overflowing */
+}
+
+.contact__info-label {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-bottom: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact__info-value {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Allow wrapping for long values if needed, but the grid should handle it */
+.contact__info-value--wrap {
+  white-space: normal;
+}
+
+/* ── Social Links ── */
+.contact__socials {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.contact__social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.contact__social:hover {
+  border-color: var(--accent-purple);
+  color: var(--accent-purple);
+  background: rgba(179, 71, 234, 0.08);
+  box-shadow: 0 0 12px rgba(179, 71, 234, 0.15);
+}
+
+/* ── Right Column: 3D Scene ── */
+.contact__right {
+  position: relative;
+}
+
+.contact__3d-wrap {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, rgba(18, 18, 26, 0.95) 0%, var(--bg-primary) 100%);
+  border: 1px solid var(--glass-border);
+}
+
+.contact__canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.contact__3d-label {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(10, 10, 15, 0.7);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border);
+  white-space: nowrap;
+}
+
+.contact__3d-label-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 6px var(--accent-cyan);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ── Responsive ── */
+@media (max-width: 968px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .contact__3d-wrap {
+    height: 350px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact__info-cards {
+    flex-direction: column;
+  }
+
+  .contact__3d-wrap {
+    height: 280px;
+  }
+}

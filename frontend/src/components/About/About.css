@@ -1,0 +1,119 @@
+.about {
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.about__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.about__intro p {
+  color: var(--text-secondary);
+  font-size: var(--fs-md);
+  line-height: 1.8;
+}
+
+.about__highlight {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.about__timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  position: relative;
+  padding-left: var(--space-xl);
+}
+
+.about__timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));
+  border-radius: var(--radius-full);
+}
+
+.about__timeline-card {
+  padding: var(--space-xl);
+  position: relative;
+}
+
+.about__timeline-dot {
+  position: absolute;
+  left: calc(-1 * var(--space-xl) - 5px);
+  top: 24px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-cyan);
+  background: var(--bg-secondary);
+}
+
+.about__timeline-card--purple .about__timeline-dot {
+  border-color: var(--accent-purple);
+}
+
+.about__timeline-year {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--accent-cyan);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.about__timeline-card--purple .about__timeline-year {
+  color: var(--accent-purple);
+}
+
+.about__timeline-title {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  margin: var(--space-sm) 0 var(--space-xs);
+  color: var(--text-primary);
+}
+
+.about__timeline-subtitle {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: var(--space-md);
+}
+
+.about__timeline-desc {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+}

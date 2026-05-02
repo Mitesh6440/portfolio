@@ -1,0 +1,135 @@
+.skills {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+  padding-bottom: var(--space-5xl);
+}
+
+/* ── Marquee wrapper ── */
+.skills__marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: var(--space-lg) 0;
+  position: relative;
+  /* Fade edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+/* ── Marquee track ── */
+.skills__marquee {
+  display: flex;
+  gap: var(--space-2xl);
+  width: max-content;
+  will-change: transform;
+}
+
+.skills__marquee--left {
+  animation: marquee-left 40s linear infinite;
+}
+
+.skills__marquee--right {
+  animation: marquee-right 45s linear infinite;
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Pause on hover */
+.skills__marquee-wrapper:hover .skills__marquee {
+  animation-play-state: paused;
+}
+
+/* ── Logo item ── */
+.skills__logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-xl) var(--space-xl);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  min-width: 110px;
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+}
+
+.skills__logo-item:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--accent-cyan);
+  box-shadow: var(--shadow-glow-cyan);
+  transform: translateY(-4px);
+}
+
+/* ── Logo image ── */
+.skills__logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: grayscale(0.3) brightness(0.9);
+  transition: filter var(--transition-base), transform var(--transition-base);
+}
+
+.skills__logo-item:hover .skills__logo-img {
+  filter: grayscale(0) brightness(1.1) drop-shadow(0 0 8px rgba(0, 240, 255, 0.4));
+  transform: scale(1.15);
+}
+
+/* ── Logo name ── */
+.skills__logo-name {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--text-muted);
+  text-align: center;
+  white-space: nowrap;
+  transition: color var(--transition-base);
+}
+
+.skills__logo-item:hover .skills__logo-name {
+  color: var(--text-primary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .skills__logo-item {
+    min-width: 90px;
+    padding: var(--space-md) var(--space-md);
+  }
+
+  .skills__logo-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .skills__marquee {
+    gap: var(--space-lg);
+  }
+}
