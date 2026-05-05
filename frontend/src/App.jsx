@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './styles/global.css';
-import CustomCursor from './components/CustomCursor/CustomCursor';
 import ScrollProgress from './components/ScrollProgress/ScrollProgress';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
@@ -75,7 +74,6 @@ function HomePage() {
 export default function App() {
   return (
     <>
-      <CustomCursor />
       <ScrollProgress />
 
       <Routes>

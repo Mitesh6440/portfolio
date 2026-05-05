@@ -1,6 +1,6 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import projectsData from '../../data/projects.json';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
@@ -284,10 +284,11 @@ function ResultsSection({ detail, cat }) {
 function ScreenshotGallery({ screenshots, projectTitle, cat }) {
   const [lightboxIndex, setLightboxIndex] = useState(null);
   const isLightboxOpen = lightboxIndex !== null;
+  const tickerRef = useRef(null);
 
   const openLightbox = useCallback((index) => {
-    setLightboxIndex(index);
-  }, []);
+    setLightboxIndex(index % screenshots.length);
+  }, [screenshots.length]);
 
   const closeLightbox = useCallback(() => {
     setLightboxIndex(null);
@@ -311,17 +312,10 @@ function ScreenshotGallery({ screenshots, projectTitle, cat }) {
 
     const handleKeyDown = (e) => {
       switch (e.key) {
-        case 'Escape':
-          closeLightbox();
-          break;
-        case 'ArrowLeft':
-          goToPrev();
-          break;
-        case 'ArrowRight':
-          goToNext();
-          break;
-        default:
-          break;
+        case 'Escape': closeLightbox(); break;
+        case 'ArrowLeft': goToPrev(); break;
+        case 'ArrowRight': goToNext(); break;
+        default: break;
       }
     };
 
@@ -336,9 +330,21 @@ function ScreenshotGallery({ screenshots, projectTitle, cat }) {
 
   if (!screenshots || screenshots.length === 0) return null;
 
+  // Double the screenshots for seamless loop
+  const displayScreenshots = [...screenshots, ...screenshots];
+
+  const slide = (direction) => {
+    if (!tickerRef.current) return;
+    const scrollAmount = 600;
+    tickerRef.current.scrollBy({
+      left: direction === 'next' ? scrollAmount : -scrollAmount,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <>
-      <section className="pd-section">
+      <section className="pd-section pd-gallery-section">
         <div className="pd-container">
           <motion.div
             initial="hidden"
@@ -346,56 +352,81 @@ function ScreenshotGallery({ screenshots, projectTitle, cat }) {
             viewport={{ once: true, margin: '-80px' }}
           >
             <SectionLabel label="Gallery" color={cat.color} />
-            <motion.h2 className="pd-section-title" variants={fadeUp} custom={0.1}>
-              Screenshots & Demo
-            </motion.h2>
-            <motion.p className="pd-gallery-desc" variants={fadeUp} custom={0.2}>
-              Walk through the complete user journey — from audio upload to intelligent task assignment.
-            </motion.p>
+            <div className="pd-gallery-header">
+              <div>
+                <motion.h2 className="pd-section-title" variants={fadeUp} custom={0.1}>
+                  Screenshots & Demo
+                </motion.h2>
+                <motion.p className="pd-gallery-desc" variants={fadeUp} custom={0.2}>
+                  Walk through the complete user journey and technical implementation.
+                </motion.p>
+              </div>
+              
+              <div className="pd-gallery-nav-buttons">
+                <button 
+                  className="pd-gallery-nav-btn" 
+                  onClick={() => slide('prev')}
+                  aria-label="Previous screenshots"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12" />
+                    <polyline points="12 19 5 12 12 5" />
+                  </svg>
+                </button>
+                <button 
+                  className="pd-gallery-nav-btn" 
+                  onClick={() => slide('next')}
+                  aria-label="Next screenshots"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </button>
+              </div>
+            </div>
           </motion.div>
+        </div>
 
-          <motion.div
-            className="pd-gallery"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
-          >
-            {screenshots.map((shot, i) => (
-              <motion.div
-                key={i}
-                className="pd-gallery__item"
-                variants={staggerItem}
-                onClick={() => openLightbox(i)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && openLightbox(i)}
-                aria-label={`View screenshot: ${shot.caption}`}
-              >
-                <div className="pd-gallery__img-wrap">
-                  <img
-                    src={typeof shot === 'string' ? shot : shot.src}
-                    alt={typeof shot === 'string' ? `${projectTitle} screenshot ${i + 1}` : shot.alt}
-                    loading="lazy"
-                  />
-                  <div className="pd-gallery__overlay">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="11" cy="11" r="8" />
-                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                      <line x1="11" y1="8" x2="11" y2="14" />
-                      <line x1="8" y1="11" x2="14" y2="11" />
-                    </svg>
+        <div className="pd-gallery-ticker-wrap">
+          <div className="pd-gallery-fade pd-gallery-fade--left" />
+          <div className="pd-gallery-fade pd-gallery-fade--right" />
+          
+          <div className="pd-gallery-ticker" ref={tickerRef}>
+            <div className="pd-gallery-ticker__inner">
+              {displayScreenshots.map((shot, i) => (
+                <div
+                  key={`${i}-${i}`}
+                  className="pd-gallery__item-wrap"
+                  onClick={() => openLightbox(i)}
+                >
+                  <div className="pd-gallery__item">
+                    <div className="pd-gallery__img-wrap">
+                      <img
+                        src={typeof shot === 'string' ? shot : shot.src}
+                        alt={typeof shot === 'string' ? `${projectTitle} screenshot ${i + 1}` : shot.alt}
+                        draggable="false"
+                      />
+                      <div className="pd-gallery__overlay">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="11" cy="11" r="8" />
+                          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                          <line x1="11" y1="8" x2="11" y2="14" />
+                          <line x1="11" y1="11" x2="14" y2="11" />
+                        </svg>
+                      </div>
+                    </div>
+                    {typeof shot !== 'string' && shot.caption && (
+                      <div className="pd-gallery__caption">
+                        <span className="pd-gallery__caption-num">0{(i % screenshots.length) + 1}</span>
+                        {shot.caption}
+                      </div>
+                    )}
                   </div>
                 </div>
-                {typeof shot !== 'string' && shot.caption && (
-                  <div className="pd-gallery__caption">
-                    <span className="pd-gallery__caption-num">0{i + 1}</span>
-                    {shot.caption}
-                  </div>
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

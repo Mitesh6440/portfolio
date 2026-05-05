@@ -104,114 +104,203 @@
   },
   {
     "id": 2,
-    "slug": "neural-style-transfer",
-    "title": "Neural Style Transfer App",
-    "tagline": "Transform photos into art with deep learning",
-    "category": "Deep Learning",
-    "description": "A deep learning application that transforms photos into artistic masterpieces using neural style transfer. Features real-time preview, multiple style models, and batch processing support.",
-    "techStack": ["Python", "PyTorch", "FastAPI", "React", "Deep Learning"],
+    "slug": "device-monitoring-system",
+    "title": "Device Monitoring System",
+    "tagline": "Enterprise-Grade Device Monitoring & Management Platform",
+    "category": "Full Stack",
+    "description": "A comprehensive platform enabling IT administrators to remotely track, analyze, and secure computing devices in real-time with integrated security scanning.",
+    "techStack": ["Java", "Vert.x", "PostgreSQL", "OSHI", "VirusTotal API", "Maven"],
     "githubUrl": "#",
     "detail": {
-      "heroImage": "/projects/project2-hero.webp",
-      "problem": "Artists and content creators often want to apply artistic styles to their photos but lack the technical skills or expensive software required. Existing neural style transfer tools are either slow, low-quality, or require GPU-heavy setups that aren't accessible to most users.",
+      "heroImage": "/projects/Device Monitoring System/01-dashboard.png",
+      "problem": "Critical need for proactive IT infrastructure management. Organizations face challenges in tracking system health, detecting security threats in real-time, and managing distributed device fleets efficiently without high overhead.",
       "features": [
         {
-          "title": "Real-Time Preview",
-          "description": "Live preview of style transfer as you adjust parameters, powered by optimized inference on lightweight models.",
-          "icon": "👁️"
+          "title": "Real-time Health Monitoring",
+          "description": "Continuous tracking of CPU, RAM, disk usage, and battery status across all registered devices.",
+          "icon": "📊"
         },
         {
-          "title": "Multiple Style Models",
-          "description": "Pre-trained models for various artistic styles — impressionism, cubism, watercolor, and custom styles uploaded by users.",
-          "icon": "🎨"
+          "title": "Security Threat Detection",
+          "description": "Automated malware scanning of running processes using industry-leading VirusTotal integration.",
+          "icon": "🛡️"
         },
         {
-          "title": "Batch Processing",
-          "description": "Process entire photo albums with a single style, with progress tracking and background queue management.",
-          "icon": "📦"
+          "title": "Location-Aware Monitoring",
+          "description": "Geographic tracking of device locations and ISP detection for asset management and security.",
+          "icon": "📍"
         },
         {
-          "title": "Resolution Control",
-          "description": "Adjustable output resolution from quick previews to print-quality 4K outputs with progressive rendering.",
-          "icon": "📐"
+          "title": "Alerting System",
+          "description": "Configurable KPI thresholds with real-time notifications for critical system resource fluctuations.",
+          "icon": "🚨"
         }
       ],
       "architecture": {
-        "description": "Built on a PyTorch backend with pre-trained VGG19 feature extractors for style transfer. The FastAPI server handles image upload, processing queues, and serves results. React frontend provides an intuitive drag-and-drop interface with real-time parameter controls.",
+        "description": "Distributed client-server architecture using a reactive Vert.x framework. The MyAgent (Client) collects system metrics using OSHI, while the HttpServer (Backend) handles data aggregation, authentication, and serves the dashboard.",
         "techDetails": [
-          { "name": "PyTorch", "role": "Deep learning framework for neural style transfer model inference" },
-          { "name": "VGG19", "role": "Pre-trained CNN for feature extraction and perceptual loss computation" },
-          { "name": "FastAPI", "role": "Async API server with background task processing for batch operations" },
-          { "name": "React", "role": "Interactive UI with drag-and-drop uploads and real-time parameter sliders" },
-          { "name": "Celery", "role": "Distributed task queue for handling batch processing jobs" }
+          { "name": "Java & Vert.x", "role": "Reactive, non-blocking framework for high-concurrency event-driven processing on both server and agent" },
+          { "name": "PostgreSQL", "role": "Robust persistent storage for historical metrics, alerts, and user authentication data" },
+          { "name": "OSHI (System Info)", "role": "Cross-platform hardware and software detection for comprehensive system metrics" },
+          { "name": "VirusTotal API", "role": "Integrated security scanning for running processes to detect potential malware threats" },
+          { "name": "REST APIs", "role": "Secure communication layer with BCrypt hashing and cookie-based session management" }
         ]
       },
       "results": {
-        "description": "The application delivers high-quality style transfers in seconds rather than minutes, making artistic AI accessible to non-technical users. The batch processing feature has been particularly popular for social media content creators.",
+        "description": "Provides a scalable solution for monitoring thousands of devices. Reduces downtime through proactive alerts and enhances security with real-time threat detection.",
         "metrics": [
-          { "label": "Processing Time", "value": "~3 sec" },
-          { "label": "Styles Available", "value": "15+" },
-          { "label": "Max Resolution", "value": "4K" },
-          { "label": "Batch Size", "value": "50 images" }
+          { "label": "Architecture", "value": "Reactive" },
+          { "label": "Database", "value": "PostgreSQL" },
+          { "label": "Security", "value": "VirusTotal" },
+          { "label": "Scale", "value": "Enterprise" }
         ]
       },
-      "screenshots": []
+      "screenshots": [
+        {
+          "src": "/projects/Device Monitoring System/01-dashboard.png",
+          "caption": "Central Dashboard — Overview of all monitored devices and their status",
+          "alt": "Device Monitoring System main dashboard"
+        },
+        {
+          "src": "/projects/Device Monitoring System/02-system-health.png",
+          "caption": "Real-time Health Metrics — Detailed CPU, RAM, and disk utilization tracking",
+          "alt": "System health monitoring charts"
+        },
+        {
+          "src": "/projects/Device Monitoring System/03-process-monitor.png",
+          "caption": "Process Monitoring — Live process list with security status indicators",
+          "alt": "Running processes list with security scan results"
+        },
+        {
+          "src": "/projects/Device Monitoring System/04-software-inventory.png",
+          "caption": "Software Inventory — Complete list of installed applications per device",
+          "alt": "Installed software inventory table"
+        },
+        {
+          "src": "/projects/Device Monitoring System/05-location-tracking.png",
+          "caption": "Geographic Tracking — Location-aware monitoring with ISP detection",
+          "alt": "Device location tracking map interface"
+        },
+        {
+          "src": "/projects/Device Monitoring System/06-alerts-config.png",
+          "caption": "Alert Configuration — Set custom thresholds for system resource alerts",
+          "alt": "Alert threshold configuration panel"
+        }
+      ],
+      "businessHighlights": {
+        "sectionTitle": "Business Value & Efficiency",
+        "description": "The system delivers high business value by ensuring infrastructure reliability and data security.",
+        "highlights": [
+          {
+            "icon": "📉",
+            "title": "Reduced Downtime",
+            "text": "Proactive alerts and real-time monitoring prevent system failures before they impact business operations."
+          },
+          {
+            "icon": "🔒",
+            "title": "Enhanced Security",
+            "text": "Integrated malware detection and process monitoring provide a robust defense against internal and external threats."
+          },
+          {
+            "icon": "💰",
+            "title": "Cost Optimization",
+            "text": "Efficient software license management and hardware utilization tracking help optimize IT spending."
+          }
+        ]
+      }
     }
   },
   {
     "id": 3,
-    "slug": "smart-analytics-dashboard",
-    "title": "Smart Analytics Dashboard",
-    "tagline": "Predictive insights powered by machine learning",
-    "category": "Full Stack",
-    "description": "A real-time analytics dashboard with predictive insights powered by ML models. Features interactive charts, anomaly detection, and automated report generation with natural language summaries.",
-    "techStack": ["React", "Next.js", "Python", "Machine Learning", "D3.js"],
+    "slug": "docmind-ai",
+    "title": "DocMind AI",
+    "tagline": "Enterprise-Grade RAG Assistant",
+    "category": "AI/ML",
+    "description": "A production-ready RAG system designed to bridge the gap between massive PDF data and actionable insights with source-verifiable transparency.",
+    "techStack": ["FastAPI", "LangChain", "Supabase", "Groq", "Google Gemini", "React"],
     "githubUrl": "#",
     "detail": {
-      "heroImage": "/projects/project3-hero.webp",
-      "problem": "Business teams drown in raw data but starve for actionable insights. Traditional dashboards show historical data without predictive capabilities, and anomaly detection requires dedicated data science resources that most small-to-mid companies can't afford.",
+      "heroImage": "/projects/DocMind/01-dashboard.png",
+      "problem": "In a world where 80% of enterprise data is unstructured, employees spend an average of 1.8 hours every day—9.3 hours per week—searching and gathering information. Traditional AI assistants often suffer from 'hallucinations,' making them unreliable for business-critical tasks. DocMind bridges this gap by providing a production-ready RAG system that transforms static PDFs into intelligent knowledge bases, ensuring every answer is grounded in the uploaded data with exact page-level references for complete auditability and trust.",
       "features": [
         {
-          "title": "Anomaly Detection",
-          "description": "Automated detection of unusual patterns in data streams using Isolation Forest and statistical methods, with configurable sensitivity thresholds.",
+          "title": "Smart Document Lifecycle",
+          "description": "Automated ingestion pipeline that handles PDF parsing, intelligent text chunking with overlap to preserve context, and seamless indexing into a high-dimensional vector space.",
+          "icon": "📂"
+        },
+        {
+          "title": "Context-Aware Q&A",
+          "description": "Advanced semantic search engine that goes beyond keyword matching to understand user intent, retrieving relevant document fragments to generate accurate, context-injected responses.",
           "icon": "🔍"
         },
         {
-          "title": "Predictive Forecasting",
-          "description": "Time-series forecasting with confidence intervals, powered by ARIMA and Prophet models for accurate trend prediction.",
-          "icon": "📈"
+          "title": "Source Pinpointing",
+          "description": "Automatic extraction of page-level metadata during indexing, allowing the system to cite the specific file name and exact page number for every piece of information provided.",
+          "icon": "📍"
         },
         {
-          "title": "Natural Language Reports",
-          "description": "Auto-generated executive summaries that translate complex data patterns into plain English insights.",
-          "icon": "📝"
-        },
-        {
-          "title": "Interactive Visualizations",
-          "description": "D3.js-powered charts with zoom, filter, and drill-down capabilities for deep data exploration.",
-          "icon": "📊"
+          "title": "Near-Instant Latency",
+          "description": "Engineered for high performance using the Groq LPU™ inference engine, delivering a fluid, real-time user experience with Llama 3 reasoning speeds that feel instantaneous.",
+          "icon": "⚡"
         }
       ],
       "architecture": {
-        "description": "A Next.js frontend with server-side rendering for fast initial loads and SEO. Python ML microservices handle forecasting and anomaly detection. D3.js powers custom interactive visualizations. PostgreSQL stores historical data with TimescaleDB extension for time-series optimization.",
+        "description": "DocMind utilizes a clean, modular RAG architecture designed for scalability and reliability. The pipeline consists of an Ingestion Layer (FastAPI + LangChain) for document processing, a Vector Intelligence Layer (Supabase Vector) for similarity search, and an Augmented Generation Layer (Groq + Llama 3) for high-speed reasoning. This serverless-ready architecture minimizes infrastructure overhead while maintaining high fidelity through Google Gemini embeddings.",
         "techDetails": [
-          { "name": "Next.js", "role": "SSR-enabled React framework for fast dashboard rendering and API routes" },
-          { "name": "D3.js", "role": "Custom interactive charts with transitions, tooltips, and drill-down navigation" },
-          { "name": "Python ML Services", "role": "Scikit-learn and Prophet models for anomaly detection and forecasting" },
-          { "name": "PostgreSQL + TimescaleDB", "role": "Time-series optimized storage for high-frequency data ingestion" },
-          { "name": "WebSocket", "role": "Real-time data streaming for live dashboard updates" }
+          { "name": "FastAPI (Python)", "role": "High-concurrency, asynchronous API layer orchestrating the complete document lifecycle and RAG workflows" },
+          { "name": "LangChain & LangGraph", "role": "Sophisticated framework for document parsing, intelligent chunking, and managing complex AI agent logic" },
+          { "name": "Supabase Vector (pgvector)", "role": "Enterprise-grade vector database providing persistent, high-dimensional similarity search and secure metadata storage" },
+          { "name": "Google Gemini API", "role": "Utilized for generating high-fidelity vector embeddings (gemini-embedding-2) to ensure precise semantic indexing" },
+          { "name": "Groq LPU™", "role": "State-of-the-art inference engine powering Llama 3.3 70B for near-instant, high-fidelity response generation" }
         ]
       },
       "results": {
-        "description": "The dashboard reduces the time from data to insight by automating the analysis pipeline. Natural language reports have made data accessible to non-technical stakeholders.",
+        "description": "DocMind drastically reduces information retrieval time by automating the search process within large document sets. By grounding LLM responses in specific document context, it eliminates hallucinations and provides verifiable transparency through automatic source attribution.",
         "metrics": [
-          { "label": "Data Refresh", "value": "Real-time" },
-          { "label": "Forecast Accuracy", "value": "92%" },
-          { "label": "Report Generation", "value": "<5 sec" },
-          { "label": "Data Points", "value": "1M+ daily" }
+          { "label": "Inference Speed", "value": "Near-Instant" },
+          { "label": "Hallucination Rate", "value": "~0% (Grounded)" },
+          { "label": "Vector Dimensions", "value": "384 (pgvector)" },
+          { "label": "Scaling", "value": "Serverless Ready" }
         ]
       },
-      "screenshots": []
+      "screenshots": [
+        {
+          "src": "/projects/DocMind/01-dashboard.png",
+          "caption": "Dashboard & Chat Interface — Seamless interaction with your documents",
+          "alt": "DocMind dashboard showing chat interface and document listing"
+        },
+        {
+          "src": "/projects/DocMind/02-documents.png",
+          "caption": "Document Management — Easy upload and indexing of PDF files",
+          "alt": "DocMind document management panel"
+        },
+        {
+          "src": "/projects/DocMind/03-source-attribution.png",
+          "caption": "Source Attribution — Precise page-level references for every answer",
+          "alt": "DocMind showing source citations with page numbers"
+        }
+      ],
+      "businessHighlights": {
+        "sectionTitle": "Business Value Proposition",
+        "description": "DocMind provides a competitive edge by transforming static documents into intelligent, actionable knowledge bases.",
+        "highlights": [
+          {
+            "icon": "⏱️",
+            "title": "Operational Efficiency",
+            "text": "Drastically reduces employee search time by transforming hundreds of static pages into a searchable, interactive knowledge base."
+          },
+          {
+            "icon": "🛡️",
+            "title": "Verifiable Accuracy",
+            "text": "Ensures data integrity by eliminating AI hallucinations, grounding every response in the enterprise's own uploaded documentation."
+          },
+          {
+            "icon": "📊",
+            "title": "Cost-Efficient Scaling",
+            "text": "Built on a lightweight, serverless-ready architecture that allows businesses to scale their knowledge management without high infrastructure costs."
+          }
+        ]
+      }
     }
   }
 ]

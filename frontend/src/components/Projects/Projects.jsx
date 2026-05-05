@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import projectsData from '../../data/projects.json';
 import './Projects.css';
 
@@ -26,6 +26,7 @@ function ProjectCard({ project, index }) {
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [isHovering, setIsHovering] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const navigate = useNavigate();
 
   const handleMouseMove = useCallback((e) => {
     if (!cardRef.current) return;
@@ -57,6 +58,7 @@ function ProjectCard({ project, index }) {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={handleMouseLeave}
+      onClick={() => navigate(`/project/${project.slug}`)}
       style={{
         transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(${isHovering ? 1.03 : 1})`,
         '--mouse-x': `${mousePos.x}%`,
@@ -132,17 +134,15 @@ function ProjectCard({ project, index }) {
             y: 8,
           }}
         >
-          <Link
-            to={`/project/${project.slug}`}
+          <div
             className="project-card__btn project-card__btn--primary hoverable"
-            onClick={(e) => e.stopPropagation()}
           >
             <span>Learn More</span>
             <svg className="project-card__btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
             </svg>
-          </Link>
+          </div>
 
         </motion.div>
       </div>

@@ -46,16 +46,10 @@
 .project-card {
   position: relative;
   border-radius: var(--radius-xl);
-  cursor: none;
+  cursor: pointer;
   transition: transform 0.2s ease;
   will-change: transform;
   isolation: isolate;
-}
-
-@media (max-width: 768px) {
-  .project-card {
-    cursor: pointer;
-  }
 }
 
 /* ── Animated gradient border ── */
@@ -71,6 +65,9 @@
     rgba(255, 45, 149, 0.05)
   );
   -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
